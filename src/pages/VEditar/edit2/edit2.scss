@@ -1,0 +1,63 @@
+page-edit2 {
+
+}
+
+.alert-md .alert-title {
+    text-align: initial;
+    font-size: 22px;
+    color: #fff;
+}
+
+.alert-md .alert-sub-title {
+    text-align: initial;
+    font-size: 16px;
+    color: #fff;
+}
+
+.alert-md .alert-button .button-inner {
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    color: #fff;
+    font-size: 20px;
+}
+
+.alert-md .alert-button-group {
+    -webkit-box-pack: end;
+    -webkit-justify-content: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+.alert-md .alert-radio-label {
+    overflow: hidden;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #fff;
+    padding: 13px 26px;
+}
+
+.alert-md .alert-radio-icon {
+    left: 13px;
+    top: 0;
+    border-radius: 50%;
+    position: relative;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #fff;
+}
+
+.alert-md [aria-checked=true] .alert-radio-label {
+    color: #222;
+}
+
+.alert-md [aria-checked=true] .alert-radio-icon {
+    border-color: #222;
+}

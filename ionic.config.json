@@ -1,0 +1,7 @@
+{
+  "name": "Servix",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
