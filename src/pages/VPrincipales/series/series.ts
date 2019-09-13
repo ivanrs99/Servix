@@ -61,7 +61,8 @@ export class SeriesPage {
   }
 
   abrirModalEdit(item:serie){
-    this.navCtrl.setRoot('Edit2Page', item);
+    var mPage=this.modalCtrl.create('Edit2Page', {data: item});
+    mPage.present();
   }
 
   mensaje (texto:string)

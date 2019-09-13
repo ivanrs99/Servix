@@ -20,7 +20,7 @@ export class Edit3Page {
     evento:""
   }
   constructor(public navCtrl: NavController, private alerta:AlertController, public navParams: NavParams, private libros:LibroProvider,private accion:AccionProvider, private toast:ToastController) {
-    this.l = this.navParams.data;
+    this.l = this.navParams.get('data');
   }
 
   cerrarModal(){

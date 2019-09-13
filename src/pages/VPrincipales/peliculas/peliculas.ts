@@ -62,7 +62,8 @@ export class PeliculasPage {
   }
 
   abrirModalEdit(item:film){
-    this.navCtrl.setRoot('EditPage', item);
+    var mPage=this.modalCtrl.create('EditPage', {data: item});
+    mPage.present();
   }
 
   mensaje (texto:string)

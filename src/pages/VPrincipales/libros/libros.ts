@@ -61,7 +61,8 @@ export class LibrosPage {
   }
 
   abrirModalEdit(item:libro){
-    this.navCtrl.setRoot('Edit3Page', item);
+    var mPage=this.modalCtrl.create('Edit3Page', {data: item});
+    mPage.present();
   }
 
   mensaje (texto:string)

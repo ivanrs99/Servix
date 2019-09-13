@@ -23,7 +23,7 @@ export class EditPage {
   }
 
   constructor(public navCtrl: NavController, private alerta:AlertController, public navParams: NavParams,private peliculas:PeliculaProvider,private accion:AccionProvider, private toast:ToastController) {
-    this.peli = this.navParams.data;
+    this.peli = this.navParams.get('data');
   }
 
   cerrarModal(){

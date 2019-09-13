@@ -21,7 +21,7 @@ export class Edit2Page {
     evento:""
   }
   constructor(public navCtrl: NavController,private alerta:AlertController, public navParams: NavParams, private series:SerieProvider,private accion:AccionProvider, private toast:ToastController) {
-    this.s = this.navParams.data;
+    this.s = this.navParams.get('data');
   }
 
   cerrarModal(){
