@@ -18,3 +18,19 @@
     background-color:#1B2836;
     color:white;
 }
+
+.action-sheets-groups-page{
+    .edit{
+        color:blue;
+        text-align: center
+    }
+    .borrar{
+        color:red;
+        text-align: center
+    }
+}
+
+.action-sheet-md .action-sheet-group .button-inner {
+    justify-content: center;
+    font-size: larger;
+}

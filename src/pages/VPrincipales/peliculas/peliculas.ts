@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, NavParams, ToastController, ActionSheetController } from 'ionic-angular';
 import { film } from '../../../pages/models/pelicula/pelicula';
 import { PeliculaProvider } from '../../../providers/pelicula/pelicula';
 import { Observable } from 'rxjs/Observable';
@@ -21,18 +21,15 @@ export class PeliculasPage {
 
   list:Observable<any[]>;
   constructor(public pelicula:PeliculaProvider, public modalCtrl:ModalController, private toast:ToastController,
-              public navCtrl: NavController, public navParams: NavParams,private accion:AccionProvider) {
+              public navCtrl: NavController, public navParams: NavParams,private accion:AccionProvider, public actionSheetCtrl: ActionSheetController) {
     this.list=this.pelicula.getItemList().snapshotChanges().pipe (map ( changes => {
-            return changes.map ( c=>(
-              {
-                key: c.payload.key,
-                ...c.payload.val(),
-              }
-            )
-            ).reverse()
-          }
-        )
-        )
+      return changes.map ( c=>(
+        {
+          key: c.payload.key,
+          ...c.payload.val(),
+        }
+      )).reverse()
+    }))
   }
   
   borrar(p:film){
@@ -50,18 +47,13 @@ export class PeliculasPage {
           {
             key: c.payload.key,
             ...c.payload.val(),
-          }
-        )
-        )
-     }
-     )
-     )
+          }))
+      }))
     }else{
       this.list=this.list.pipe(map(arr =>
         arr.filter( r => r.Categoria === this.cat )
       ))
-    }
-    
+    }    
   }
 
   abrirModal(){
@@ -80,5 +72,28 @@ export class PeliculasPage {
       duration: 1300
     });
     toast.present();
+  }
+
+  pop(item:film) {
+    const actionSheet = this.actionSheetCtrl.create({
+      cssClass:'action-sheets-groups-page',
+      buttons: [
+        {
+          text: 'Editar',
+          cssClass:'edit',
+          handler: () => {
+            this.abrirModalEdit(item)
+          }
+        },{
+          text: 'Borrar',
+          cssClass:'borrar',
+          role: 'destructive',
+          handler: () => {
+            this.borrar(item)
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 }

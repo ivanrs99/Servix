@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, NavParams, ToastController, ActionSheetController } from 'ionic-angular';
 import { LibroProvider } from '../../../providers/libro/libro';
 import { Observable } from 'rxjs/Observable';
 import {map} from 'rxjs/operators';
@@ -19,18 +19,15 @@ export class LibrosPage {
     evento:""
   }
   libros:Observable<any[]>;
-  constructor(public libro:LibroProvider, private toast:ToastController, public modalCtrl:ModalController, public navCtrl: NavController, public navParams: NavParams,private accion:AccionProvider) {
+  constructor(public libro:LibroProvider, private toast:ToastController, public actionSheetCtrl: ActionSheetController, public modalCtrl:ModalController, public navCtrl: NavController, public navParams: NavParams,private accion:AccionProvider) {
     this.libros=this.libro.getItemList().snapshotChanges().pipe (map ( changes => {
       return changes.map ( c=>(
         {
           key: c.payload.key,
           ...c.payload.val(),
         }
-      )
-      ).reverse()
-  }
-  )
-  )
+      )).reverse()
+    }))
   }
 
   borrar(p:libro){
@@ -49,17 +46,13 @@ export class LibrosPage {
             key: c.payload.key,
             ...c.payload.val(),
           }
-        )
-        )
-     }
-     )
-     )
+        ))
+      }))
     }else{
       this.libros=this.libros.pipe(map(arr =>
         arr.filter( r => r.Categoria === this.cat )
       ))
-    }
-    
+    }    
   }
   
   abrirModal(){
@@ -78,5 +71,28 @@ export class LibrosPage {
       duration: 1300
     });
     toast.present();
+  }
+
+  pop(item:libro) {
+    const actionSheet = this.actionSheetCtrl.create({
+      cssClass:'action-sheets-groups-page',
+      buttons: [
+        {
+          text: 'Editar',
+          cssClass:'edit',
+          handler: () => {
+            this.abrirModalEdit(item)
+          }
+        },{
+          text: 'Borrar',
+          cssClass:'borrar',
+          role: 'destructive',
+          handler: () => {
+            this.borrar(item)
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 }

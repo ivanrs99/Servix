@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ToastController, ActionSheetController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import {map} from 'rxjs/operators';
 import { SerieProvider } from '../../../providers/serie/serie';
@@ -18,7 +18,7 @@ export class SeriesPage {
     evento:""
   }
   lista:Observable<any[]>;
-  constructor(public serie:SerieProvider,private toast:ToastController, public modalCtrl:ModalController, public navCtrl: NavController, public navParams: NavParams,private accion:AccionProvider) {
+  constructor(public serie:SerieProvider,private toast:ToastController, public modalCtrl:ModalController, public navCtrl: NavController, public navParams: NavParams,private accion:AccionProvider, public actionSheetCtrl: ActionSheetController) {
     this.lista=this.serie.getItemList().snapshotChanges().pipe (map ( changes => {
       return changes.map ( c=>(
         {
@@ -27,9 +27,7 @@ export class SeriesPage {
         }
       )
       ).reverse()
-  }
-  )
-  )
+    }))
   }
 
   categoriaElegida(){
@@ -41,17 +39,13 @@ export class SeriesPage {
             key: c.payload.key,
             ...c.payload.val(),
           }
-        )
-        )
-     }
-     )
-     )
+        ))
+      }))
     }else{
       this.lista=this.lista.pipe(map(arr =>
         arr.filter( r => r.Categoria === this.cat )
       ))
-    }
-    
+    }    
   }
 
   borrar(p:serie){
@@ -77,5 +71,28 @@ export class SeriesPage {
       duration: 1300
     });
     toast.present();
+  }
+
+  pop(item:serie) {
+    const actionSheet = this.actionSheetCtrl.create({
+      cssClass:'action-sheets-groups-page',
+      buttons: [
+        {
+          text: 'Editar',
+          cssClass:'edit',
+          handler: () => {
+            this.abrirModalEdit(item)
+          }
+        },{
+          text: 'Borrar',
+          cssClass:'borrar',
+          role: 'destructive',
+          handler: () => {
+            this.borrar(item)
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 }

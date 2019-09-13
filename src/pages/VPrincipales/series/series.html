@@ -33,12 +33,10 @@
 </ion-item>
 <hr/>
 <ion-list>
-  <ion-item *ngFor="let serie of lista | async">
+  <ion-item *ngFor="let serie of lista | async" (click)="pop(serie)">
     <h1>{{serie.Titulo}}</h1>
     <h2>{{serie.Categoria}}</h2>
     <h3>{{serie.Puntuacion}}</h3>
-    <button ion-button clear item-end (click)="abrirModalEdit(serie)">Editar</button>
-    <button ion-button clear item-end color="danger" (click)="borrar(serie)">Borrar</button>
   </ion-item>
 </ion-list>
 </ion-content>
