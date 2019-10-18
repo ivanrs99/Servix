@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, ViewController, AlertController } from 'ionic-angular';
 import { serie } from '../../models/serie/serie';
 import { SerieProvider } from '../../../providers/serie/serie';
 import { AccionProvider } from '../../../providers/accion/accion';
@@ -20,12 +20,12 @@ export class Edit2Page {
   a:accion={
     evento:""
   }
-  constructor(public navCtrl: NavController,private alerta:AlertController, public navParams: NavParams, private series:SerieProvider,private accion:AccionProvider, private toast:ToastController) {
+  constructor(public navCtrl: NavController, public viewCtrl : ViewController, private alerta:AlertController, public navParams: NavParams, private series:SerieProvider,private accion:AccionProvider, private toast:ToastController) {
     this.s = this.navParams.get('data');
   }
 
   cerrarModal(){
-    this.navCtrl.setRoot('SeriesPage');
+    this.viewCtrl.dismiss();
   }
 
   guardar(s:serie){
@@ -40,8 +40,8 @@ export class Edit2Page {
       this.series.editItem(s);
       this.a.evento="Has editado la serie "+this.s.Titulo;
       this.accion.addItem(this.a);
-      this.navCtrl.setRoot('SeriesPage');
-      this.mensaje("Serie editada correctamente.");
+      this.viewCtrl.dismiss();
+      this.mensaje("Serie editada correctamente");
     }
   }
 

@@ -54,7 +54,7 @@ export class ModalPage {
           this.peli.Puntuacion=this.puntuacion;
           this.peli.Categoria=this.cat;        
           this.a.evento="Has añadido la película "+this.peli.Titulo;
-          this.mensaje("Película añadida correctamente.");
+          this.mensaje("Película añadida correctamente");
           this.pelicula.addItem(this.peli);
           this.accion.addItem(this.a);
           this.viewCtrl.dismiss();

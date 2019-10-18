@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ToastController, AlertController } from 'ionic-angular';
 import { film } from '../../models/pelicula/pelicula';
 import { PeliculaProvider } from '../../../providers/pelicula/pelicula';
 import { AccionProvider } from '../../../providers/accion/accion';
@@ -22,12 +22,12 @@ export class EditPage {
     evento:""
   }
 
-  constructor(public navCtrl: NavController, private alerta:AlertController, public navParams: NavParams,private peliculas:PeliculaProvider,private accion:AccionProvider, private toast:ToastController) {
+  constructor(public navCtrl: NavController,public viewCtrl : ViewController, private alerta:AlertController, public navParams: NavParams,private peliculas:PeliculaProvider,private accion:AccionProvider, private toast:ToastController) {
     this.peli = this.navParams.get('data');
   }
 
   cerrarModal(){
-    this.navCtrl.setRoot('PeliculasPage');
+    this.viewCtrl.dismiss();
   }
 
   guardar(peli:film){
@@ -42,8 +42,8 @@ export class EditPage {
       this.peliculas.editItem(peli);
       this.a.evento="Has editado la película "+this.peli.Titulo;
       this.accion.addItem(this.a);
-      this.navCtrl.setRoot('PeliculasPage');
-      this.mensaje("Película editada correctamente.");
+      this.viewCtrl.dismiss();
+      this.mensaje("Película editada correctamente");
     }
   }
 

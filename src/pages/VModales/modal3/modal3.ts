@@ -52,7 +52,7 @@ export class Modal3Page {
         this.l.Puntuacion=this.puntuacion;
         this.l.Categoria=this.cat;
         this.a.evento="Has añadido el libro "+this.l.Titulo;
-        this.mensaje("Libro añadido correctamente.");
+        this.mensaje("Libro añadido correctamente");
         this.libro.addItem(this.l);
         this.accion.addItem(this.a);
         this.viewCtrl.dismiss();

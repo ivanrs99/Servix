@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ToastController, AlertController } from 'ionic-angular';
 import { libro } from '../../../pages/models/libro/libro';
 import { LibroProvider } from '../../../providers/libro/libro';
 import { accion } from '../../models/accion/accion';
@@ -19,12 +19,12 @@ export class Edit3Page {
   a:accion={
     evento:""
   }
-  constructor(public navCtrl: NavController, private alerta:AlertController, public navParams: NavParams, private libros:LibroProvider,private accion:AccionProvider, private toast:ToastController) {
+  constructor(public navCtrl: NavController,public viewCtrl : ViewController,private alerta:AlertController, public navParams: NavParams, private libros:LibroProvider,private accion:AccionProvider, private toast:ToastController) {
     this.l = this.navParams.get('data');
   }
 
   cerrarModal(){
-    this.navCtrl.setRoot('LibrosPage');
+    this.viewCtrl.dismiss();
   }
 
   guardar(l:libro){
@@ -39,8 +39,8 @@ export class Edit3Page {
       this.libros.editItem(l);
       this.a.evento="Has editado el libro "+this.l.Titulo;
       this.accion.addItem(this.a);
-      this.navCtrl.setRoot('LibrosPage');
-      this.mensaje("Libro editado correctamente.");
+      this.viewCtrl.dismiss();
+      this.mensaje("Libro editado correctamente");
     }
   }
 

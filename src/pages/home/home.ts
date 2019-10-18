@@ -30,20 +30,15 @@ export class HomePage {
           email: ['', Validators.compose([Validators.required, Validators.email])],
           password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
         });  
-        //if(this.platform.is("cordova")){
-          //this.appVersion.getVersionNumber().then(version=>{
-            //this.versionNumber=version;
-          //});
-        //} 
   }
 
   login(u:user){
     if(u.Usuario=="" || u.pass==""){
-      this.mensaje("Campos incompletos.");
+      this.mensaje("Campos incompletos");
     }else{
       this.auth.signInWithEmail(u.Usuario,u.pass).then(
 				() => this.iniciarSesionCache(),
-				error => this.mensaje("Error de inicio de sesión.")
+				error => this.mensaje("Error de inicio de sesión")
 			);
     }
   }

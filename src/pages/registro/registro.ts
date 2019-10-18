@@ -27,7 +27,7 @@ export class RegistroPage {
 
   addUsuario(u:user){
     if(u.Usuario=="" || u.pass=="" || this.passwordRep==""){
-      this.mensaje("Campos incompletos.");
+      this.mensaje("Campos incompletos");
     }else{
       if(u.pass==this.passwordRep){
         this.auth.signUp(u.Usuario,u.pass).then(
@@ -35,27 +35,11 @@ export class RegistroPage {
 				  error => this.mensaje(error)
         );
       }else{
-        this.mensaje("Contraseñas no coinciden.");
+        this.mensaje("Contraseñas no coinciden");
       }
     }
   }
   
-  ionViewCanLeave(){
-    /**let loading = this.loadingCtrl.create({
-      content: "Espere por favor..."
-    })
-    loading.present();
-
-    let promesa = new Promise((resolv,reject) =>{
-      setTimeout(() => {
-        resolv (true);
-        loading.dismiss();        
-      }, 1000);
-    } );
-    return promesa; */
-  }
-
-
   mensaje (texto:string)
   {
     const toast = this.toast.create({

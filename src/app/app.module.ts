@@ -13,7 +13,7 @@ import { AngularFirestoreModule} from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { PrincipalPage } from '../pages/principal/principal';
 import { PeliculaProvider } from '../providers/pelicula/pelicula';
-import { TooltipsModule } from 'ionic-tooltips';
+import { TooltipsModule, TooltipController } from 'ionic-tooltips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SerieProvider } from '../providers/serie/serie';
 import { LibroProvider } from '../providers/libro/libro';
@@ -74,7 +74,8 @@ export const firebaseConfig = {
     AuthService,
     AngularFireAuth,
     AccionProvider,
-    CacheProvider
+    CacheProvider,
+    TooltipController
   ]
 })
 export class AppModule {}

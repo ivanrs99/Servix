@@ -52,7 +52,7 @@ export class Modal2Page {
         this.s.Puntuacion=this.puntuacion;
         this.s.Categoria=this.cat;
         this.a.evento="Has añadido la serie "+this.s.Titulo;
-        this.mensaje("Serie añadida correctamente.");
+        this.mensaje("Serie añadida correctamente");
         this.serie.addItem(this.s);
         this.accion.addItem(this.a);
         this.viewCtrl.dismiss();
