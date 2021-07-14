@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+      <button left ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Inicio</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+ <h2>Bienvenid@ {{usuario}}!!</h2>
+ <h6>Tus últimas acciones:</h6>
+ <hr/>
+ <ion-list>
+  <ion-item *ngFor="let e of list | async">
+    <p>{{e.evento}}</p>
+  </ion-item>
+  <ion-item>
+    <p>Te has registrado</p>
+  </ion-item>
+ </ion-list>
+</ion-content>

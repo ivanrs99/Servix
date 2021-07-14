@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      INICIAR SESION
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding> 
+  <div text-center>
+      <ion-img width="220" height="107" style="margin-bottom: 10%" src="assets/imagenes/icono.png"></ion-img>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Correo" [(ngModel)]="u.Usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Contraseña" type="password" [(ngModel)]="u.pass"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button block (click)="login(u)">LOGIN</button>
+  <button ion-button block color="danger" (click)="irRegistro()" >REGISTRARSE</button>
+  <label id="version" style="position: absolute;bottom:0; right:0; margin-right: 5px;"> <!--{{ versionNumber }}-->version: 1.6</label>
+</ion-content>

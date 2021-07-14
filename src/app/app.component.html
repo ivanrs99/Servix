@@ -1,0 +1,38 @@
+<!-- <ion-app>
+  <ion-router-outlet></ion-router-outlet>
+</ion-app> -->
+
+
+<ion-nav [root]="rootPage" #content></ion-nav>
+
+<ion-menu [swipeEnabled]="false" [content]="content"> 
+        <ion-header>
+          <ion-toolbar [color]="currentColor">
+            <ion-title>Menu</ion-title>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-content [ngClass]="{ 'oscuremod': newStyle }">
+          <ion-list>
+            <button menuClose ion-item [ngClass]="{ 'oscuremod': newStyle }" (click)="irInicio()">
+              Inicio
+            </button>
+            <button menuClose ion-item [ngClass]="{ 'oscuremod': newStyle }" (click)="irPeliculas()">
+              Películas
+            </button>
+            <button menuClose ion-item [ngClass]="{ 'oscuremod': newStyle }" (click)="irSeries()">
+              Series
+            </button>
+            <button menuClose ion-item [ngClass]="{ 'oscuremod': newStyle }" (click)="irLibros()">
+              Libros
+            </button>
+            <button menuClose ion-item [ngClass]="{ 'oscuremod': newStyle }" style="color:red" (click)="irHome()">
+              Cerrar sesión
+            </button>
+          </ion-list>
+        <!-- <button ion-button clear (click)="color()" style="position: absolute;bottom:0; left:0; margin-left: 5px;;width: 10%;" icon-only>
+            <ion-icon name="bulb"></ion-icon>
+          </button> -->
+        </ion-content>
+</ion-menu>
+

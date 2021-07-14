@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Correo" [(ngModel)]="u.Usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Contraseña" type="password" tooltip="Mínimo 6 caracteres." positionV="bottom" [(ngModel)]="u.pass"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Repetir contraseña" type="password" [(ngModel)]="passwordRep"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button block (click)="addUsuario(u)">REGISTRAR</button>
+</ion-content>

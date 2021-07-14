@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button (click)="cerrarModal()">Cancelar</button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="guardar(peli)">Guardar</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <ion-item>
+              <ion-input placeholder="Titulo" [(ngModel)]="peli.Titulo"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input placeholder="Puntuación" type="number" min="0" max="10" [(ngModel)]="peli.Puntuacion"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-select placeholder="Categoría" [(ngModel)]="peli.Categoria">
+                <ion-option value="Acción">Acción</ion-option>
+                <ion-option value="Ciencia-Ficción">Ciencia-Ficción</ion-option>
+                <ion-option value="Drama">Drama</ion-option>
+                <ion-option value="Bélica">Bélica</ion-option>
+                <ion-option value="Comedia">Comedia</ion-option>
+                <ion-option value="Fantasía">Fantasía</ion-option>
+                <ion-option value="Terror">Terror</ion-option>
+                <ion-option value="Romántica">Romántica</ion-option>
+                <ion-option value="Musical">Musical</ion-option>
+                <ion-option value="Western">Western</ion-option>
+              </ion-select>
+            </ion-item>
+        </ion-card-content>
+      </ion-card>
+</ion-content>
